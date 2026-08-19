@@ -1,3 +1,3 @@
-import testModule as tM
+import anki as tM
 
 tM.test_function()
