@@ -1,2 +1,3 @@
-def start_application():
-    print("Application started.")
+class Application:
+    def start(self):
+        print("Application is started.")

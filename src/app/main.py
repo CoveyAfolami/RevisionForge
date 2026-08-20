@@ -1,9 +1,11 @@
-from lifecycle import start_application
-import anki.anki_connect as ac
+from .lifecycle import Application
+from ..anki import anki_connect as ac
 
 #A simple test script to check if the AnkiConnect API is working correctly. It retrieves the names of all decks in Anki and prints them to the console.
 def main():
     print("Hello. Revision!")
+    app = Application()
+    app.start()
 
     deck_names = ac.get_deck_names()
     model_names = ac.get_model_names()
