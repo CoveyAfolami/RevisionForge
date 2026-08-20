@@ -1,5 +1,5 @@
 import json 
-
+#Settings and subjects are loaded from their respective JSON files.
 def load_settings() -> dict:
     with open("config/settings.json", "r") as file:
         settings = json.load(file)
