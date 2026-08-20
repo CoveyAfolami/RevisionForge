@@ -27,9 +27,20 @@ def get_deck_names():
     response = send_request(request)
     return handle_response(response)
 
+#Builds a request to get the names of all models in Anki
+def build_model_names_request():
+    return {
+        "action": "modelNames",
+        "version": 6,
+        "params": {},
+        "key": anki_api_key 
+    }
 
-
-
+# Retrieves the names of all models in Anki
+def get_model_names():
+    request = build_model_names_request()
+    response = send_request(request)
+    return handle_response(response)
 
 def send_request(request):
 
