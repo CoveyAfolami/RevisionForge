@@ -1,3 +1,12 @@
+from dataclasses import dataclass
+
+# class Application:
+#     def start(self) -> None:
+#         print("Application is started.")
+
+@dataclass
 class Application:
-    def start(self):
-        print("Application is started.")
+    name: str = "RevisionForge"
+
+    def start(self) -> None:
+        print(f"{self.name} started.")
