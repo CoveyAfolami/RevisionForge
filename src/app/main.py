@@ -4,7 +4,7 @@ from ..anki import anki_connect as ac
 #A simple test script to check if the AnkiConnect API is working correctly. It retrieves the names of all decks in Anki and prints them to the console.
 def main():
     print("Hello. Revision!")
-    app = Application()
+    app = Application(name="RevisionForge")
     app.start()
 
     deck_names = ac.get_deck_names()

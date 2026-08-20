@@ -9,4 +9,7 @@ class Application:
     name: str = "RevisionForge"
 
     def start(self) -> None:
-        print(f"{self.name} started.")
+        try:
+            print(f"{self.name} started.")
+        except Exception as error:
+            print(f"{self.name} failed to start: {error}")
