@@ -12,6 +12,8 @@ def handle_response(response):
     
     return response["result"]
 
+
+
 #Builds a request to get the names of all decks in Anki
 def build_deck_names_request():
     return {
@@ -20,7 +22,6 @@ def build_deck_names_request():
         "params": {},
         "key": anki_api_key 
     }
-
 # Retrieves the names of all decks in Anki
 def get_deck_names():
     request = build_deck_names_request()
@@ -35,7 +36,6 @@ def build_model_names_request():
         "params": {},
         "key": anki_api_key 
     }
-
 # Retrieves the names of all models in Anki
 def get_model_names():
     request = build_model_names_request()
