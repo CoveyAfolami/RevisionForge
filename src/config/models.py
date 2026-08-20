@@ -6,7 +6,8 @@ class Settings:
     application_name: str 
 
 @dataclass
-class Subjects:
+class Subject:
     name: str
     exam_board: str
     qualification: str
+

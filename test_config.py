@@ -1,9 +1,11 @@
-from src.config.loader import load_settings, load_subjects 
+import src.config.loader as loader 
 
-settings = load_settings()
-subjects = load_subjects()
+settings = loader.load_settings()
+subjects = loader.load_subjects()
+
 
 print(settings)
-print(settings["application_name"])
+print(settings.application_name)
 
-print(subjects)
+#print(subjects)
+print(subjects[0])

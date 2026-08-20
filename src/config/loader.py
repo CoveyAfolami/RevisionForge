@@ -1,11 +1,23 @@
-import json 
+import json
+from .models import Settings, Subject
 #Settings and subjects are loaded from their respective JSON files.
-def load_settings() -> dict:
+def load_settings() -> Settings:
     with open("config/settings.json", "r") as file:
         settings = json.load(file)
-    return settings
+    return Settings(
+          application_name=settings["application_name"]
+        )
 
-def load_subjects() -> dict:
+def load_subject(subject_data) -> Subject:
+    return Subject(
+        name=subject_data["name"],
+        exam_board=subject_data["exam_board"],
+        qualification=subject_data["qualification"]
+    )
+
+def load_subjects() -> list[Subject]:
     with open("config/subjects.json", "r") as file:
         subjects = json.load(file)
-    return subjects
+    return [load_subject(subject) for subject in subjects["subjects"]]
+    
+
