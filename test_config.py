@@ -1,7 +1,6 @@
-import json
+from src.config.loader import load_settings 
 
-with open("config/settings.json", "r") as file:
-    settings = json.load(file)
+settings = load_settings()
 
 print(settings)
 print(settings["application_name"])
