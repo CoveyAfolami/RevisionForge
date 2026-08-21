@@ -1,13 +1,14 @@
 from dataclasses import dataclass
 
-#Settings and Subjects dataclasses to represent the configuration data
+#Settings and SubjectConfig dataclasses to represent the configuration data
 @dataclass
 class Settings:
     application_name: str 
 
 @dataclass
-class Subject:
+class SubjectConfig:
     name: str
     exam_board: str
     qualification: str
+    anki_deck: str
 
