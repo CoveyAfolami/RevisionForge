@@ -1,10 +1,10 @@
-
 {
-    "subjects": [
-        {
-            "name": "Chemistry",
-            "exam_board": "CAIE",
-            "qualification": "IGCSE"
-        }
-    ]
+    "subjects":{
+        "chemistry":{
+                "exam_board": "CAIE",
+                "qualification": "IGCSE",
+                "anki_deck": "GCSE::Chemistry"
+            }
+        
+    }
 }

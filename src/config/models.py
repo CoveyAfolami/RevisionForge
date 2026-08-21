@@ -1,6 +1,12 @@
 from dataclasses import dataclass
 
-#Settings and SubjectConfig dataclasses to represent the configuration data
+#
+@dataclass
+class AppConfig:
+    settings: Settings
+    subjects: list[SubjectConfig]
+
+
 @dataclass
 class Settings:
     application_name: str 
@@ -11,4 +17,5 @@ class SubjectConfig:
     exam_board: str
     qualification: str
     anki_deck: str
+
 
