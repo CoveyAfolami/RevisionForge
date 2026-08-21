@@ -1,6 +1,11 @@
 import json
-from .models import Settings, SubjectConfig
+from .models import Settings, SubjectConfig, AppConfig
 #Settings and SubjectConfig dataclasses to represent the configuration data
+
+def load_config() -> AppConfig:
+    settings = load_settings()
+    subjects = load_subjects()
+    return AppConfig(settings=settings, subjects=subjects)
 
 #Loads the settings from the settings.json file and returns a Settings object
 def load_settings() -> Settings:
