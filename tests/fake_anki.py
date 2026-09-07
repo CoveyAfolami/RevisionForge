@@ -97,11 +97,15 @@ class FakeAnkiConnect:
     @staticmethod
     def _query_matches(query, note):
         deck_terms = re.findall(r'deck:"([^"]+)"', query)
-        text_terms = [t for t in re.sub(r'deck:"[^"]+"', "", query).split() if t]
+        rest = re.sub(r'deck:"[^"]+"', "", query)
+        phrases = re.findall(r'"([^"]+)"', rest)
+        plain_terms = [t for t in re.sub(r'"[^"]+"', "", rest).split() if t]
         if any(note["deckName"] != d for d in deck_terms):
             return False
         text = " ".join(note["fields"].values()).lower()
-        return all(term.lower() in text for term in text_terms)
+        phrases_ok = all(p.lower() in text for p in phrases)
+        terms_ok = all(t.lower() in text for t in plain_terms)
+        return phrases_ok and terms_ok
 
 
 class _Response:

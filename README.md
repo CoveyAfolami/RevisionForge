@@ -12,8 +12,9 @@ your approval → safe Anki write with post-write verification.
 - [x] Phase 3 — Logging + custom exceptions
 - [x] Phase 4 — SQLite layer (processing runs, resources, cards)
 - [x] Phase 5–8 — AnkiConnect client, full reads, safe writes, deck/note-type mapping, post-write verification
-- [ ] Phases 9–14 — LLM integration, card generation, PDF processing
-- [ ] Phases 25–32 — Duplicates, approval CLI, full pipeline, history
+- [x] Phase 9–14 — LLM client (Groq/OpenRouter/Gemini/any), card generation, PDF extraction + chunking
+- [x] Phase 21–22, 25 — Generation rules, deterministic validation, exact duplicate detection (batch + DB + Anki)
+- [ ] Phases 27–32 — Approval CLI, safe execution, full pipeline, history
 
 Full plan: `docs/sources/revision-forge-implementation-architecture-and-roadmap.pdf`
 
@@ -35,7 +36,22 @@ Requires: Python 3.10+, Anki desktop with the AnkiConnect add-on (for live use).
 python -m src.app.main --anki-check       # is Anki reachable? list decks + note types
 python -m src.app.main --fields Cloze     # show real field names of a note type
 python -m src.app.main --map chemistry    # where each card kind goes for a subject
+python -m src.app.main --preview book.pdf --subject chemistry --pages 140-146 --topic isotopes
+                                          # generate cards and print them — NO Anki writes
 ```
+
+### LLM providers
+
+Set `LLM_PROVIDER` in `.env` — the client is OpenAI-compatible, so any of
+these work without code changes:
+
+| Provider | Free? | Key from |
+|---|---|---|
+| `groq` (default) | Yes, permanently | console.groq.com |
+| `openrouter` | Free models available | openrouter.ai |
+| `gemini` | Free tier | aistudio.google.com (18+) |
+| `openai` | Paid | platform.openai.com |
+| `ollama` | Free, local, offline | ollama.com (runs on your PC) |
 
 ## Tests
 

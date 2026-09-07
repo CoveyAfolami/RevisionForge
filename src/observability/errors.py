@@ -17,6 +17,10 @@ class AnkiConnectionError(RevisionForgeError):
     """Anki is not running, AnkiConnect is unreachable, or it returned an error."""
 
 
+class LLMError(RevisionForgeError):
+    """The LLM provider is unreachable or returned an unusable response."""
+
+
 class ResourceProcessingError(RevisionForgeError):
     """A resource (e.g. a PDF) could not be loaded or processed."""
 
