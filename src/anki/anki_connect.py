@@ -1,53 +1,45 @@
+"""Backwards-compatible module-level functions.
+
+New code should use AnkiConnectClient directly (src.anki.client).
+This shim keeps existing scripts working.
+"""
+
 import requests
-from dotenv import load_dotenv
-import os
 
-load_dotenv()
+from ..observability.errors import AnkiConnectionError
+from .client import AnkiConnectClient
 
-anki_api_key = os.getenv("anki_api_key")
-
-def handle_response(response):
-    if response["error"] is not None:
-        raise Exception(f"AnkiConnect error: {response['error']}")
-    
-    return response["result"]
+_default = AnkiConnectClient()
 
 
+def get_deck_names() -> list[str]:
+    return _default.get_decks()
 
-#Builds a request to get the names of all decks in Anki
-def build_deck_names_request():
-    return {
-        "action": "deckNames",
-        "version": 6,
-        "params": {},
-        "key": anki_api_key 
-    }
-# Retrieves the names of all decks in Anki
-def get_deck_names():
-    request = build_deck_names_request()
-    response = send_request(request)
-    return handle_response(response)
 
-#Builds a request to get the names of all models in Anki
-def build_model_names_request():
-    return {
-        "action": "modelNames",
-        "version": 6,
-        "params": {},
-        "key": anki_api_key 
-    }
-# Retrieves the names of all models in Anki
-def get_model_names():
-    request = build_model_names_request()
-    response = send_request(request)
-    return handle_response(response)
+def get_model_names() -> list[str]:
+    return _default.get_note_types()
 
-def send_request(request):
 
-    response = requests.post(
-        "http://localhost:8765",
-         json=request,
-         timeout=10,
-    )
+def build_deck_names_request() -> dict:
+    request = {"action": "deckNames", "version": 6, "params": {}}
+    if _default.key:
+        request["key"] = _default.key
+    return request
 
+
+def build_model_names_request() -> dict:
+    request = {"action": "modelNames", "version": 6, "params": {}}
+    if _default.key:
+        request["key"] = _default.key
+    return request
+
+
+def send_request(request: dict) -> dict:
+    """Legacy raw request sender — returns the full response envelope."""
+    try:
+        response = requests.post(_default.url, json=request, timeout=_default.timeout)
+    except requests.exceptions.ConnectionError as error:
+        raise AnkiConnectionError(
+            f"Cannot reach AnkiConnect at {_default.url} — is Anki running?"
+        ) from error
     return response.json()
