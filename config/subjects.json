@@ -1,10 +1,70 @@
 {
-    "subjects":{
-        "chemistry":{
-                "exam_board": "CAIE",
-                "qualification": "IGCSE",
-                "anki_deck": "GCSE::Chemistry"
-            }
-        
+  "subjects": {
+    "biology": {
+      "exam_board": "CAIE",
+      "qualification": "IGCSE",
+      "syllabus_code": "0610",
+      "anki_deck": "GCSE::Biology"
+    },
+    "chemistry": {
+      "exam_board": "CAIE",
+      "qualification": "IGCSE",
+      "syllabus_code": "0620",
+      "anki_deck": "GCSE::Chemistry"
+    },
+    "physics": {
+      "exam_board": "CAIE",
+      "qualification": "IGCSE",
+      "syllabus_code": "0625",
+      "anki_deck": "GCSE::Physics"
+    },
+    "mathematics": {
+      "exam_board": "Edexcel",
+      "qualification": "GCSE",
+      "syllabus_code": "1MA1",
+      "anki_deck": "GCSE::Maths::Maths"
+    },
+    "further_maths": {
+      "exam_board": "AQA",
+      "qualification": "GCSE",
+      "syllabus_code": "8365",
+      "anki_deck": "GCSE::Maths::Further"
+    },
+    "english_language": {
+      "exam_board": "CAIE",
+      "qualification": "IGCSE",
+      "syllabus_code": "0500",
+      "anki_deck": "GCSE::English Language"
+    },
+    "english_literature": {
+      "exam_board": "Edexcel",
+      "qualification": "IGCSE",
+      "syllabus_code": "4ET1",
+      "anki_deck": "GCSE::English Literature"
+    },
+    "history": {
+      "exam_board": "AQA",
+      "qualification": "GCSE",
+      "syllabus_code": "8145",
+      "anki_deck": "GCSE::History"
+    },
+    "computer_science": {
+      "exam_board": "OCR",
+      "qualification": "GCSE",
+      "syllabus_code": "J277",
+      "anki_deck": "GCSE::CS"
+    },
+    "food_preparation_and_nutrition": {
+      "exam_board": "OCR",
+      "qualification": "GCSE",
+      "syllabus_code": "J309",
+      "anki_deck": "GCSE::Food"
+    },
+    "design_and_technology": {
+      "exam_board": "AQA",
+      "qualification": "GCSE",
+      "syllabus_code": "8552",
+      "anki_deck": "GCSE::DT"
     }
+  }
 }

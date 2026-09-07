@@ -1,4 +1,68 @@
 {
-
-    "application_name": "RevisionForge"
+  "application_name": "RevisionForge",
+  "database": {
+    "path": "data/revision_forge.db"
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "logs/revision_forge.log",
+    "console": true
+  },
+  "flashcard_preferences": {
+    "one_idea_per_card": true,
+    "exam_focused": true,
+    "use_mark_scheme_terminology": true,
+    "concise": true,
+    "default_note_type": "Cloze",
+    "note_type_rules": {
+      "cloze": {
+        "note_type": "Cloze",
+        "use_for": [
+          "chemical equations",
+          "mathematical formulae",
+          "definitions with key terms to recall",
+          "fill-in-the-blank content"
+        ],
+        "basic_qa_format": "Question? {{c1::answer}}"
+      },
+      "cloze_shuffle": {
+        "note_type": "Cloze Shuffle",
+        "delimiter": "||",
+        "required_tag": "Shuffle",
+        "use_for": ["lists of 4 or more items"],
+        "exceptions": [
+          "ordered sequences where order is the content (e.g. reactivity series)",
+          "process steps (e.g. gelatinisation sequence)"
+        ]
+      },
+      "basic_and_extra": {
+        "note_type": "Basic (and extra)",
+        "fields": ["Front", "Back", "Extra"],
+        "use_for": ["definitions"],
+        "deck_suffix": "::Definitions",
+        "applies_to_subjects": [
+          "biology",
+          "chemistry",
+          "physics",
+          "computer_science",
+          "food_preparation_and_nutrition",
+          "design_and_technology"
+        ]
+      },
+      "basic_pp": {
+        "note_type": "Basic++",
+        "use_for": ["standard question-answer cards"]
+      }
+    },
+    "tagging": {
+      "board_tag": true,
+      "subject_tag": true,
+      "topic_tag": true,
+      "definitions_use_chapter_level_tags": true
+    }
+  },
+  "approval": {
+    "required_for_anki_writes": true,
+    "allow_bulk_approve": true
+  }
 }
